@@ -15,6 +15,9 @@ export const ButtonStyled = styled.button`
   &:active {
     background-color: rgba(0, 0, 0, 0.5);
   }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const ButtonStyledActive = styled(ButtonStyled)`

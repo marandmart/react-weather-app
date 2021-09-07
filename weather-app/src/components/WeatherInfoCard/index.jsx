@@ -1,27 +1,27 @@
-import { CardRow, Card, Weather, DayHour } from "./styles";
+import { CardRow, Card, Weather, HourWeek } from "./styles";
 
 const WeatherInfoCard = () => {
   return (
     <CardRow>
       <Card>
         <Weather>25°C</Weather>
-        <DayHour>Segunda</DayHour>
+        <HourWeek>Segunda</HourWeek>
       </Card>
       <Card>
         <Weather>30°C</Weather>
-        <DayHour>Terça</DayHour>
+        <HourWeek>Terça</HourWeek>
       </Card>
       <Card>
         <Weather>28°C</Weather>
-        <DayHour>Quarta</DayHour>
+        <HourWeek>Quarta</HourWeek>
       </Card>
       <Card>
         <Weather>23°C</Weather>
-        <DayHour>Quinta</DayHour>
+        <HourWeek>Quinta</HourWeek>
       </Card>
       <Card>
         <Weather>21°C</Weather>
-        <DayHour>Sexta</DayHour>
+        <HourWeek>Sexta</HourWeek>
       </Card>
     </CardRow>
   );

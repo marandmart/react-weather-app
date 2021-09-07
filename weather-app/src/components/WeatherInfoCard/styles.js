@@ -24,7 +24,7 @@ export const Weather = styled.span`
   color: white;
 `;
 
-export const DayHour = styled.span`
+export const HourWeek = styled.span`
   font-size: 2.5em;
   color: white;
 `;
