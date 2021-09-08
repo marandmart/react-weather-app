@@ -1,17 +1,15 @@
 import {
   WeatherInfoCard,
-  Clock,
   CurrentDate,
   CurrentWeather,
   Cidade,
 } from "../../components";
 import {
   Wrapper,
-  Header,
   SearchField,
-  SearchArea,
   CurrentDay,
-  DayWeekCards,
+  WeekInfo,
+  imagesBackground,
 } from "./styles";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,16 +17,23 @@ import { setCity } from "../../redux/modules/city";
 
 const Main = () => {
   const dispatch = useDispatch();
-  const { city } = useSelector((state) => state.city);
+  const { city, weather, background } = useSelector((state) => state.city);
   const [cityInput, setCityInput] = useState("");
+
+  const getBackground = (str) => {
+    const searchFor = str.toLowerCase();
+    return "url(" + imagesBackground[searchFor] + ")";
+  };
 
   const handleInputChange = (e) => {
     setCityInput(e.target.value);
   };
 
   const handleInputSubmit = () => {
-    dispatch(setCity(cityInput.charAt(0).toUpperCase() + cityInput.slice(1)));
-    setCityInput("");
+    if (cityInput) {
+      dispatch(setCity(cityInput.charAt(0).toUpperCase() + cityInput.slice(1)));
+      setCityInput("");
+    }
   };
 
   useEffect(() => {
@@ -43,27 +48,26 @@ const Main = () => {
   });
 
   return (
-    <Wrapper>
-      <Header>
-        <SearchArea>
-          <SearchField
-            placeholder="Cidade"
-            size="40"
-            value={cityInput}
-            onChange={handleInputChange}
-            onSubmit={handleInputSubmit}
-          />
-        </SearchArea>
-      </Header>
+    <Wrapper
+      style={{
+        backgroundImage: getBackground(background),
+      }}
+    >
+      <SearchField
+        placeholder="Cidade"
+        size="40"
+        value={cityInput}
+        onChange={handleInputChange}
+        onSubmit={handleInputSubmit}
+      />
       <CurrentDay>
-        <CurrentWeather />
         <Cidade>{city}</Cidade>
         <CurrentDate />
-        <Clock />
+        <CurrentWeather />
       </CurrentDay>
-      <DayWeekCards>
-        <WeatherInfoCard />
-      </DayWeekCards>
+      <WeekInfo>
+        <WeatherInfoCard weather={weather} />
+      </WeekInfo>
     </Wrapper>
   );
 };

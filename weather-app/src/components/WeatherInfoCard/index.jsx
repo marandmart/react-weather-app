@@ -1,29 +1,22 @@
-import { CardRow, Card, Weather, HourWeek } from "./styles";
+import { useSelector } from "react-redux";
+import { Card, WeatherValue, Day } from "./styles";
+import { DAYNAMES } from "../CurrentDate";
 
 const WeatherInfoCard = () => {
+  const { weather } = useSelector((state) => state.city);
+  const today = new Date().getDay();
+  const days = DAYNAMES.slice(today + 1).concat(DAYNAMES.slice(0, today));
+
   return (
-    <CardRow>
-      <Card>
-        <Weather>25°C</Weather>
-        <HourWeek>Segunda</HourWeek>
-      </Card>
-      <Card>
-        <Weather>30°C</Weather>
-        <HourWeek>Terça</HourWeek>
-      </Card>
-      <Card>
-        <Weather>28°C</Weather>
-        <HourWeek>Quarta</HourWeek>
-      </Card>
-      <Card>
-        <Weather>23°C</Weather>
-        <HourWeek>Quinta</HourWeek>
-      </Card>
-      <Card>
-        <Weather>21°C</Weather>
-        <HourWeek>Sexta</HourWeek>
-      </Card>
-    </CardRow>
+    <>
+      {weather.map((day, index) => (
+        <Card key={index}>
+          <Day>{days[index]}</Day>
+          <WeatherValue>Max: {Math.round(day.temp.max)}</WeatherValue>
+          <WeatherValue>Min: {Math.round(day.temp.min)}</WeatherValue>
+        </Card>
+      ))}
+    </>
   );
 };
 

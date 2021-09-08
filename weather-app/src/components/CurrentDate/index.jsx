@@ -12,7 +12,7 @@ const MONTHNAMES = [
   "Novembro",
   "Dezembro",
 ];
-const DAYNAMES = [
+export const DAYNAMES = [
   "Domingo",
   "Segunda-feira",
   "Terça-feira",
