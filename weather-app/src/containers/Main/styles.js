@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   background-position: left;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100vh;
   width: 100vw;
@@ -20,25 +20,18 @@ export const Header = styled.div`
   width: 100vw;
 `;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-left: 80px;
-`;
-
 export const SearchArea = styled.div`
-  position: absolute;
-  right: 80px;
-  top: 25px;
+  margin-top: 30px;
+  display: flex;
 `;
 
 export const SearchField = styled.input`
-  position: absolute;
   border: 2px solid #555;
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
+  margin: 0 20px;
   &:first-child {
-    right: 10px;
+    margin-right: 5px;
   }
 `;
 
@@ -56,6 +49,9 @@ export const CurrentDay = styled.div`
   box-sizing: border-box;
   div,
   h2,
+  h3,
+  h4,
+  h5,
   p {
     margin: 0;
     padding: 0 0;
